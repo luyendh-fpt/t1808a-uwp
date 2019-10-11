@@ -49,3 +49,8 @@ C:\Users\xuan hung\source\repos\T1808AHelloUWP\T1808AHelloUWP\obj\x86\Debug\Page
 C:\Users\xuan hung\source\repos\T1808AHelloUWP\T1808AHelloUWP\obj\x86\Debug\Pages\LoginPage.xaml
 C:\Users\xuan hung\source\repos\T1808AHelloUWP\T1808AHelloUWP\obj\x86\Debug\Pages\LoginPage.xbf
 C:\Users\xuan hung\source\repos\T1808AHelloUWP\T1808AHelloUWP\bin\x86\Debug\Newtonsoft.Json.dll
+C:\Users\xuan hung\source\repos\T1808AHelloUWP\T1808AHelloUWP\bin\x86\Debug\Pages\RegisterPage.xbf
+C:\Users\xuan hung\source\repos\T1808AHelloUWP\T1808AHelloUWP\obj\x86\Debug\Pages\RegisterPage.g.i.cs
+C:\Users\xuan hung\source\repos\T1808AHelloUWP\T1808AHelloUWP\obj\x86\Debug\Pages\RegisterPage.g.cs
+C:\Users\xuan hung\source\repos\T1808AHelloUWP\T1808AHelloUWP\obj\x86\Debug\Pages\RegisterPage.xaml
+C:\Users\xuan hung\source\repos\T1808AHelloUWP\T1808AHelloUWP\obj\x86\Debug\Pages\RegisterPage.xbf
