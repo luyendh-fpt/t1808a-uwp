@@ -73,16 +73,16 @@
                     <TextBox Grid.Row="6" Grid.Column="1" x:Name="Introduction"></TextBox>
                     <TextBlock Grid.Row="7" Grid.Column="0" >Gender</TextBlock>
                     <StackPanel Grid.Row="7" Grid.Column="1" Orientation="Horizontal">
-                        <RadioButton Content="Male" Tag="Green" IsChecked="True"/>
-                        <RadioButton Content="Female" Tag="Yellow"/>
-                        <RadioButton Content="Other" Tag="Blue"/>
+                        <RadioButton Content="Male" Tag="Male" IsChecked="True" Checked="RadionButton_OnChecked"/>
+                        <RadioButton Content="Female" Tag="Female" Checked="RadionButton_OnChecked"/>
+                        <RadioButton Content="Other" Tag="Other" Checked="RadionButton_OnChecked"/>
                     </StackPanel>
                     <TextBlock Grid.Row="8" Grid.Column="0" >Birthday</TextBlock>
                     <DatePicker Margin="10" Grid.Row="8" Grid.Column="1" x:Name="Birthday"/>
                     <TextBlock Grid.Row="9" Grid.Column="0" >Password</TextBlock>
                     <PasswordBox Grid.Row="9" Grid.Column="1"  x:Name="Password"/>
                     <StackPanel Grid.Row="10" Grid.Column="1" Orientation="Horizontal">
-                        <Button Margin="10">Submit</Button>
+                        <Button Click="ButtonBase_OnClick">Submit</Button>
                         <Button Margin="10">Reset</Button>
                     </StackPanel>
                 </Grid>

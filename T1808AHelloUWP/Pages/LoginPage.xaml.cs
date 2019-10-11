@@ -35,8 +35,8 @@ namespace T1808AHelloUWP
         {
             var member = new Member
             {
-                Email = Email.Text,
-                Password = Password.Password
+                email = Email.Text,
+                password = Password.Password
             };
             var memberJson = JsonConvert.SerializeObject(member);
             Debug.WriteLine(memberJson);

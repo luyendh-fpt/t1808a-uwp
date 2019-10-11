@@ -11,6 +11,8 @@
     <Page.Resources>
         <Style TargetType="TextBlock">
             <Setter Property="Margin" Value="10"></Setter>
+            <Setter Property="FontSize" Value="15"></Setter>
+            <Setter Property="FontWeight" Value="Bold"></Setter>
         </Style>
         <Style TargetType="TextBox">
             <Setter Property="Margin" Value="10"></Setter>
@@ -31,6 +33,7 @@
             <Setter Property="Margin" Value="10"></Setter>
         </Style>
     </Page.Resources>
+
     <ScrollViewer>
         <ScrollViewer.Content>
             <StackPanel>
@@ -70,16 +73,16 @@
                     <TextBox x:ConnectionId='8' Grid.Row="6" Grid.Column="1" x:Name="Introduction"></TextBox>
                     <TextBlock Grid.Row="7" Grid.Column="0" >Gender</TextBlock>
                     <StackPanel Grid.Row="7" Grid.Column="1" Orientation="Horizontal">
-                        <RadioButton Content="Male" Tag="Green" IsChecked="True"/>
-                        <RadioButton Content="Female" Tag="Yellow"/>
-                        <RadioButton Content="Other" Tag="Blue"/>
+                        <RadioButton x:ConnectionId='12' Content="Male" Tag="Male" IsChecked="True"                                 />
+                        <RadioButton x:ConnectionId='13' Content="Female" Tag="Female"                                 />
+                        <RadioButton x:ConnectionId='14' Content="Other" Tag="Other"                                 />
                     </StackPanel>
                     <TextBlock Grid.Row="8" Grid.Column="0" >Birthday</TextBlock>
                     <DatePicker x:ConnectionId='9' Margin="10" Grid.Row="8" Grid.Column="1" x:Name="Birthday"/>
                     <TextBlock Grid.Row="9" Grid.Column="0" >Password</TextBlock>
                     <PasswordBox x:ConnectionId='10' Grid.Row="9" Grid.Column="1"  x:Name="Password"/>
                     <StackPanel Grid.Row="10" Grid.Column="1" Orientation="Horizontal">
-                        <Button Margin="10">Submit</Button>
+                        <Button x:ConnectionId='11'                           >Submit</Button>
                         <Button Margin="10">Reset</Button>
                     </StackPanel>
                 </Grid>
