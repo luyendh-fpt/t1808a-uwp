@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using T1808AHelloUWP.Demo;
 using T1808AHelloUWP.Pages;
 
 namespace T1808AHelloUWP
@@ -67,7 +68,7 @@ namespace T1808AHelloUWP
                     // When the navigation stack isn't restored navigate to the first page,
                     // configuring the new page by passing required information as a navigation
                     // parameter
-                    rootFrame.Navigate(typeof(RegisterPage), e.Arguments);
+                    rootFrame.Navigate(typeof(NavigationViewDemo), e.Arguments);
                 }
                 // Ensure the current window is active
                 Window.Current.Activate();

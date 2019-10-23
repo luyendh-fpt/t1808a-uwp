@@ -64,7 +64,11 @@
                     <TextBlock Grid.Row="2" Grid.Column="0">Email</TextBlock>
                     <TextBox Grid.Row="2" Grid.Column="1" x:Name="Email"/>
                     <TextBlock Grid.Row="3" Grid.Column="0">Avatar</TextBlock>
-                    <TextBox Grid.Row="3" Grid.Column="1" x:Name="Avatar"/>
+                    <StackPanel Grid.Row="3" Grid.Column="1">
+                        <Image HorizontalAlignment="Left" x:Name="Avatar" Width="150" Height="150"></Image>
+                        <TextBlock x:Name="AvatarUrl" Visibility="Collapsed"></TextBlock>
+                        <Button Click="CapturePhoto">Select Avatar</Button>
+                    </StackPanel>
                     <TextBlock Grid.Row="4" Grid.Column="0">Phone</TextBlock>
                     <TextBox Grid.Row="4" Grid.Column="1" x:Name="Phone"/>
                     <TextBlock Grid.Row="5" Grid.Column="0" >Address</TextBlock>
@@ -84,6 +88,7 @@
                     <StackPanel Grid.Row="10" Grid.Column="1" Orientation="Horizontal">
                         <Button Click="ButtonBase_OnClick">Submit</Button>
                         <Button Margin="10">Reset</Button>
+                        <HyperlinkButton Click="ButtonLogin_OnClick">or login</HyperlinkButton>
                     </StackPanel>
                 </Grid>
             </StackPanel>

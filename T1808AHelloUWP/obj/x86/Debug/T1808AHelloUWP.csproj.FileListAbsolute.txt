@@ -54,3 +54,13 @@ C:\Users\xuan hung\source\repos\T1808AHelloUWP\T1808AHelloUWP\obj\x86\Debug\Page
 C:\Users\xuan hung\source\repos\T1808AHelloUWP\T1808AHelloUWP\obj\x86\Debug\Pages\RegisterPage.g.cs
 C:\Users\xuan hung\source\repos\T1808AHelloUWP\T1808AHelloUWP\obj\x86\Debug\Pages\RegisterPage.xaml
 C:\Users\xuan hung\source\repos\T1808AHelloUWP\T1808AHelloUWP\obj\x86\Debug\Pages\RegisterPage.xbf
+C:\Users\xuan hung\source\repos\T1808AHelloUWP\T1808AHelloUWP\bin\x86\Debug\Demo\ScrollViewerDemo.xbf
+C:\Users\xuan hung\source\repos\T1808AHelloUWP\T1808AHelloUWP\obj\x86\Debug\Demo\ScrollViewerDemo.g.i.cs
+C:\Users\xuan hung\source\repos\T1808AHelloUWP\T1808AHelloUWP\obj\x86\Debug\Demo\ScrollViewerDemo.g.cs
+C:\Users\xuan hung\source\repos\T1808AHelloUWP\T1808AHelloUWP\obj\x86\Debug\Demo\ScrollViewerDemo.xaml
+C:\Users\xuan hung\source\repos\T1808AHelloUWP\T1808AHelloUWP\obj\x86\Debug\Demo\ScrollViewerDemo.xbf
+C:\Users\xuan hung\source\repos\T1808AHelloUWP\T1808AHelloUWP\bin\x86\Debug\Demo\NavigationViewDemo.xbf
+C:\Users\xuan hung\source\repos\T1808AHelloUWP\T1808AHelloUWP\obj\x86\Debug\Demo\NavigationViewDemo.g.i.cs
+C:\Users\xuan hung\source\repos\T1808AHelloUWP\T1808AHelloUWP\obj\x86\Debug\Demo\NavigationViewDemo.g.cs
+C:\Users\xuan hung\source\repos\T1808AHelloUWP\T1808AHelloUWP\obj\x86\Debug\Demo\NavigationViewDemo.xaml
+C:\Users\xuan hung\source\repos\T1808AHelloUWP\T1808AHelloUWP\obj\x86\Debug\Demo\NavigationViewDemo.xbf

@@ -7,16 +7,41 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="Margin" Value="10"></Setter>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Margin" Value="10"></Setter>
+        </Style>
+        <Style TargetType="PasswordBox">
+            <Setter Property="Margin" Value="10"></Setter>
+        </Style>
+    </Page.Resources>
 
-    <Grid>
-        <StackPanel Orientation="Horizontal">
-            <TextBlock x:ConnectionId='2'  x:Name="MyText" HorizontalAlignment="Left" Margin="149,105,0,0" Text="Email" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" Height="19"/>
-            <TextBlock x:ConnectionId='3' x:Name="MyText_Copy" HorizontalAlignment="Left" Margin="149,164,0,0" Text="Password" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" Height="19"/>
-            <PasswordBox x:ConnectionId='4' x:Name="Password" HorizontalAlignment="Left" Margin="226,157,0,0" VerticalAlignment="Top" Width="279"/>
-            <Button x:ConnectionId='5' Content="Login" Margin="226,215,0,0" VerticalAlignment="Top" Width="70"                           />
-            <Button Content="Reset" Margin="311,215,0,0" VerticalAlignment="Top" Width="70" />
-            <TextBox x:ConnectionId='6' x:Name="Email" HorizontalAlignment="Left" Margin="226,98,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="279"/>
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center">Login</TextBlock>
+        <TextBlock Grid.Row="1" Grid.Column="0">Email</TextBlock>
+        <TextBox x:ConnectionId='2' x:Name="Email" Grid.Row="1" Grid.Column="1"></TextBox>
+        <TextBlock Grid.Row="2" Grid.Column="0">Password</TextBlock>
+        <PasswordBox x:ConnectionId='3' x:Name="Password" Grid.Row="2" Grid.Column="1"></PasswordBox>
+        <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal">
+            <Button x:ConnectionId='5' Margin="10"                            >Submit</Button>
+            <Button>Reset</Button>
         </StackPanel>
+        <HyperlinkButton x:ConnectionId='4' HorizontalAlignment="Center" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"                           >Or Register</HyperlinkButton>
+        
     </Grid>
 </Page>
 
