@@ -129,6 +129,7 @@
     <Compile Include="Entity\MemberCredential.cs" />
     <Compile Include="Entity\MemberLogin.cs" />
     <Compile Include="Entity\ProjectConfiguration.cs" />
+    <Compile Include="Entity\Song.cs" />
     <Compile Include="Entity\Student.cs" />
     <Compile Include="Pages\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
@@ -146,6 +147,7 @@
     <Compile Include="Service\GoogleDriveFileService.cs" />
     <Compile Include="Service\IFileService.cs" />
     <Compile Include="Service\IMemberService.cs" />
+    <Compile Include="Service\ISongService.cs" />
     <Compile Include="Service\LocalFileService.cs" />
     <Compile Include="Service\MemberService.cs" />
   </ItemGroup>

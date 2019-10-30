@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
@@ -38,14 +39,17 @@ namespace T1808AHelloUWP.Service
             var content = new StringContent(dataToSend, Encoding.UTF8, "application/json");
             var response = httpClient.PostAsync(ProjectConfiguration.MEMBER_LOGIN_URL, content).GetAwaiter().GetResult();
             var memberCredential = JsonConvert.DeserializeObject<MemberCredential>(response.Content.ReadAsStringAsync().Result);
-            // Debug.WriteLine(memberCredential.token);
-            // SaveTokenToFile(memberCredential);
             return memberCredential;
         }
 
         public Member GetInformation(string token)
         {
-            throw new NotImplementedException();
+            var httpClient = new HttpClient();
+            httpClient.DefaultRequestHeaders.Authorization =
+                new AuthenticationHeaderValue(token);
+            var response = httpClient.GetAsync(ProjectConfiguration.MEMBER_GET_INFORMATION).GetAwaiter().GetResult();
+            var member = JsonConvert.DeserializeObject<Member>(response.Content.ReadAsStringAsync().Result);
+            return member;
         }
     }
 }
