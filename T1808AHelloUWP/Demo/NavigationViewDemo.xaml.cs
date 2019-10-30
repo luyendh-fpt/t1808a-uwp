@@ -43,7 +43,7 @@ namespace T1808AHelloUWP.Demo
         {
         ("home", typeof(RegisterPage)),
         ("apps", typeof(RegisterPage)),
-        ("games", typeof(ScrollViewerDemo)),
+        ("games", typeof(ListSongPage)),
         ("music", typeof(LoginPage)),
         ("information", typeof(UserInformation)),
     };

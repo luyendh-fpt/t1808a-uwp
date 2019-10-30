@@ -10,6 +10,7 @@ App.xbf
 Demo\NavigationViewDemo.xbf
 Demo\ScrollViewerDemo.xbf
 MainPage.xbf
+Pages\ListSongPage.xbf
 Pages\LoginPage.xbf
 Pages\RegisterPage.xbf
 Pages\UserInformation.xbf

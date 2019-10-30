@@ -131,6 +131,9 @@
     <Compile Include="Entity\ProjectConfiguration.cs" />
     <Compile Include="Entity\Song.cs" />
     <Compile Include="Entity\Student.cs" />
+    <Compile Include="Pages\ListSongPage.xaml.cs">
+      <DependentUpon>ListSongPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
@@ -176,6 +179,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Demo\ScrollViewerDemo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ListSongPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

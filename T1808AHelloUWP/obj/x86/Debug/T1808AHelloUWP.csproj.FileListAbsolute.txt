@@ -69,3 +69,8 @@ C:\Users\xuan hung\source\repos\T1808AHelloUWP\T1808AHelloUWP\obj\x86\Debug\Page
 C:\Users\xuan hung\source\repos\T1808AHelloUWP\T1808AHelloUWP\obj\x86\Debug\Pages\UserInformation.g.cs
 C:\Users\xuan hung\source\repos\T1808AHelloUWP\T1808AHelloUWP\obj\x86\Debug\Pages\UserInformation.xaml
 C:\Users\xuan hung\source\repos\T1808AHelloUWP\T1808AHelloUWP\obj\x86\Debug\Pages\UserInformation.xbf
+C:\Users\xuan hung\source\repos\T1808AHelloUWP\T1808AHelloUWP\bin\x86\Debug\Pages\ListSongPage.xbf
+C:\Users\xuan hung\source\repos\T1808AHelloUWP\T1808AHelloUWP\obj\x86\Debug\Pages\ListSongPage.g.i.cs
+C:\Users\xuan hung\source\repos\T1808AHelloUWP\T1808AHelloUWP\obj\x86\Debug\Pages\ListSongPage.g.cs
+C:\Users\xuan hung\source\repos\T1808AHelloUWP\T1808AHelloUWP\obj\x86\Debug\Pages\ListSongPage.xaml
+C:\Users\xuan hung\source\repos\T1808AHelloUWP\T1808AHelloUWP\obj\x86\Debug\Pages\ListSongPage.xbf

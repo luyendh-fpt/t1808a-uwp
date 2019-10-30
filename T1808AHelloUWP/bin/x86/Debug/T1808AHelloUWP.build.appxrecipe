@@ -79,6 +79,9 @@
     <AppxPackagedFile Include="C:\Users\xuan hung\source\repos\T1808AHelloUWP\T1808AHelloUWP\bin\x86\Debug\Demo\ScrollViewerDemo.xbf">
       <PackagePath>Demo\ScrollViewerDemo.xbf</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\xuan hung\source\repos\T1808AHelloUWP\T1808AHelloUWP\bin\x86\Debug\Pages\ListSongPage.xbf">
+      <PackagePath>Pages\ListSongPage.xbf</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\xuan hung\source\repos\T1808AHelloUWP\T1808AHelloUWP\bin\x86\Debug\Pages\LoginPage.xbf">
       <PackagePath>Pages\LoginPage.xbf</PackagePath>
     </AppxPackagedFile>
