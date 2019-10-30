@@ -154,9 +154,11 @@
       <RootEvent Name="Checked" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Image">
+      <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Width" />
       <RootProperty Name="Height" />
     </RootType>
     <RootType FullName="T1808AHelloUWP.Pages.RegisterPage" />
+    <RootType FullName="T1808AHelloUWP.Pages.UserInformation" />
   </Roots.RootTypes>
 </Roots>

@@ -65,7 +65,7 @@
                     <TextBox x:ConnectionId='4' Grid.Row="2" Grid.Column="1" x:Name="Email"/>
                     <TextBlock Grid.Row="3" Grid.Column="0">Avatar</TextBlock>
                     <StackPanel Grid.Row="3" Grid.Column="1">
-                        <Image x:ConnectionId='15' x:Name="Avatar" Width="150" Height="150"></Image>
+                        <Image x:ConnectionId='15' HorizontalAlignment="Left" x:Name="Avatar" Width="150" Height="150"></Image>
                         <TextBlock x:ConnectionId='16' x:Name="AvatarUrl" Visibility="Collapsed"></TextBlock>
                         <Button x:ConnectionId='17'                     >Select Avatar</Button>
                     </StackPanel>

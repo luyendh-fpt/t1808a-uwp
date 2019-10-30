@@ -41,45 +41,7 @@ namespace T1808AHelloUWP.Demo
                 name = "Hung"
             });
             this.InitializeComponent();
-
-            ReadTokenFromFile();
         }
 
-        private async void ReadTokenFromFile()
-        {
-            var storageFolder = await ApplicationData.Current.LocalFolder.CreateFolderAsync("SavedFile",
-                CreationCollisionOption.OpenIfExists);
-            try
-            {
-                var storageFile =
-                    await storageFolder.GetFileAsync("token.txt");
-
-                if (storageFile != null)
-                {
-                    var jsonContent = await FileIO.ReadTextAsync(storageFile);
-                    MemberCredential memberCredential = JsonConvert.DeserializeObject<MemberCredential>(jsonContent);
-                    TokenKey.Text = memberCredential.token;
-
-                    // Lấy thông tin người dùng
-                    // qua api https://2-dot-backup-server-003.appspot.com/_api/v2/members/information
-                }
-            }
-            catch (Exception e)
-            {
-                TokenKey.Text = "Need login.";
-            }
-            
-            
-            //Debug.WriteLine(memberCredential.token);
-
-            //Debug.WriteLine(content);
-            //var memberCredential = new MemberCredential();
-            //memberCredential.token = Guid.NewGuid().ToString();
-            //memberCredential.secretToken = memberCredential.token;
-            //memberCredential.createdTimeMLS = DateTime.Now.Millisecond;
-            //memberCredential.expiredTimeMLS = DateTime.Today.AddDays(7).Millisecond;
-            //memberCredential.status = 1;
-            //Debug.WriteLine(memberCredential.token);
-        }
     }
 }

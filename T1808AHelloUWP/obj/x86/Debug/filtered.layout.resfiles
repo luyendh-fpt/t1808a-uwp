@@ -12,5 +12,6 @@ Demo\ScrollViewerDemo.xbf
 MainPage.xbf
 Pages\LoginPage.xbf
 Pages\RegisterPage.xbf
+Pages\UserInformation.xbf
 T1808AHelloUWP.xr.xml
 Properties\Default.rd.xml

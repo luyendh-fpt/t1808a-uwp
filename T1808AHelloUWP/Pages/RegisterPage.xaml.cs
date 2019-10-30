@@ -21,6 +21,7 @@ using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 using Newtonsoft.Json;
 using T1808AHelloUWP.Entity;
+using T1808AHelloUWP.Service;
 using StorageFile = Windows.Storage.StorageFile;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
@@ -33,12 +34,12 @@ namespace T1808AHelloUWP.Pages
     public sealed partial class RegisterPage : Page
     {
         private string _gender = "Gender";
-        private const string REGISTER_URL = "https://2-dot-backup-server-003.appspot.com/_api/v2/members";
-        private const string GET_UPLOAD_URL = "https://2-dot-backup-server-003.appspot.com/get-upload-token";
         private StorageFile photo;
+        private IMemberService _memberService;
         public RegisterPage()
         {
             this.InitializeComponent();
+            this._memberService = new MemberService();
         }
 
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
@@ -64,20 +65,15 @@ namespace T1808AHelloUWP.Pages
                 birthday = birthday,
                 password = this.Password.Password
             };
-            // tạo đối tượng httpclient giúp gửi dữ liệu đi. (hoặc lấy dữ liệu về)
-            var httpClient = new HttpClient();
-            // chuyển kiểu dữ liệu c# thành kiểu dữ liệu json.
-            var dataToSend = JsonConvert.SerializeObject(member);
-            // gói gém, gắn mác cho dữ liệu gửi đi, xác định kiểu dữ liệu là json, encode là utf8.
-            var content = new StringContent(dataToSend, Encoding.UTF8, "application/json");
-            // thực hiện gửi dữ liệu với phương thức post.
-            var response = httpClient.PostAsync(REGISTER_URL, content).GetAwaiter().GetResult();
-            // lấy kết quả trả về từ server.
-            var jsonContent = response.Content.ReadAsStringAsync().Result;
-            // ép kiểu kết quả từ dữ liệu json sang dữ liệu của C#
-            var responseMember = JsonConvert.DeserializeObject<Member>(jsonContent);
-            // in ra id của member trả về.
-            Debug.WriteLine("Register success with id: " + responseMember.id);
+            var responseMember = this._memberService.Register(member);
+            if (responseMember != null)
+            {
+                Debug.WriteLine("Register success with id: " + responseMember.id);
+            }
+            else
+            {
+                Debug.WriteLine("Register fails !");
+            }
         }
 
         private async void ProcessCaptureImage()
@@ -96,13 +92,6 @@ namespace T1808AHelloUWP.Pages
 
             string uploadUrl = GetUploadUrl();
             HttpUploadFile(uploadUrl, "myFile", "image/jpeg");
-            //StorageFolder destinationFolder =
-            //    await ApplicationData.Current.LocalFolder.CreateFolderAsync("ProfilePhotoFolder",
-            //        CreationCollisionOption.OpenIfExists);
-
-            //await photo.CopyAsync(destinationFolder, "ProfilePhoto.jpg", NameCollisionOption.ReplaceExisting);
-            //await photo.DeleteAsync();
-
         }
 
         public async void HttpUploadFile(string url, string paramName, string contentType)        {            string boundary = "---------------------------" + DateTime.Now.Ticks.ToString("x");            byte[] boundarybytes = System.Text.Encoding.ASCII.GetBytes("\r\n--" + boundary + "\r\n");            HttpWebRequest wr = (HttpWebRequest)WebRequest.Create(url);            wr.ContentType = "multipart/form-data; boundary=" + boundary;            wr.Method = "POST";            Stream rs = await wr.GetRequestStreamAsync();            rs.Write(boundarybytes, 0, boundarybytes.Length);            string header = string.Format("Content-Disposition: form-data; name=\"{0}\"; filename=\"{1}\"\r\nContent-Type: {2}\r\n\r\n", paramName, "path_file", contentType);            byte[] headerbytes = System.Text.Encoding.UTF8.GetBytes(header);            rs.Write(headerbytes, 0, headerbytes.Length);
@@ -122,7 +111,7 @@ namespace T1808AHelloUWP.Pages
         {
             var httpClient = new HttpClient();
             // thực hiện gửi dữ liệu với phương thức post.
-            var response = httpClient.GetAsync(GET_UPLOAD_URL).GetAwaiter().GetResult();
+            var response = httpClient.GetAsync(ProjectConfiguration.GET_UPLOAD_URL).GetAwaiter().GetResult();
             // lấy kết quả trả về từ server.
             var uploadUrl = response.Content.ReadAsStringAsync().Result;
             Debug.WriteLine("Upload url: " + uploadUrl);

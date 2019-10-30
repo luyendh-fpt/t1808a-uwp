@@ -45,6 +45,7 @@ namespace T1808AHelloUWP.Demo
         ("apps", typeof(RegisterPage)),
         ("games", typeof(ScrollViewerDemo)),
         ("music", typeof(LoginPage)),
+        ("information", typeof(UserInformation)),
     };
 
         private void NavView_Loaded(object sender, RoutedEventArgs e)

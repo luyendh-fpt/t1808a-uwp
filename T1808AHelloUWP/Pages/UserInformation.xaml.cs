@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
-using System.Reflection;
+using System.Net.Http.Headers;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
-using Windows.Data.Json;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Storage;
@@ -20,48 +19,43 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using T1808AHelloUWP.Entity;
-using T1808AHelloUWP.Pages;
 using T1808AHelloUWP.Service;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace T1808AHelloUWP
+namespace T1808AHelloUWP.Pages
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class LoginPage : Windows.UI.Xaml.Controls.Page
+    public sealed partial class UserInformation : Page
     {
-
         private IMemberService _memberService;
         private IFileService _fileService;
 
-        public LoginPage()
+        public UserInformation()
         {
             this.InitializeComponent();
             this._memberService = new MemberService();
             this._fileService = new LocalFileService();
+            this.Loaded += LoadUserInformation;
         }
 
-
-
-        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+        private async void LoadUserInformation(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(RegisterPage));
-        }
-
-        private void ButtonLogin_OnClick(object sender, RoutedEventArgs e)
-        {
-            var memberLogin = new MemberLogin
+            var memberCredential = await this._fileService.ReadMemberCredentialFromFile();
+            if (memberCredential == null)
             {
-                email = Email.Text,
-                password = Password.Password
-            };
-            var memberCredential = this._memberService.Login(memberLogin);
-            this._fileService.SaveMemberCredentialToFile(memberCredential);
-        }
+                this.Frame.Navigate(typeof(LoginPage));
+            }
 
+            if (memberCredential != null)
+            {
+                var member = this._memberService.GetInformation(memberCredential.token);
+                Email.Text = member.email;
+                Name.Text = member.firstName + " " + member.lastName;
+            }
+        }
     }
 }

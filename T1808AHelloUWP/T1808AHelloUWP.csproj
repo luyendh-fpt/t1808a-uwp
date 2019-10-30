@@ -128,6 +128,7 @@
     <Compile Include="Entity\Member.cs" />
     <Compile Include="Entity\MemberCredential.cs" />
     <Compile Include="Entity\MemberLogin.cs" />
+    <Compile Include="Entity\ProjectConfiguration.cs" />
     <Compile Include="Entity\Student.cs" />
     <Compile Include="Pages\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
@@ -138,7 +139,15 @@
     <Compile Include="Pages\RegisterPage.xaml.cs">
       <DependentUpon>RegisterPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\UserInformation.xaml.cs">
+      <DependentUpon>UserInformation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\GoogleDriveFileService.cs" />
+    <Compile Include="Service\IFileService.cs" />
+    <Compile Include="Service\IMemberService.cs" />
+    <Compile Include="Service\LocalFileService.cs" />
+    <Compile Include="Service\MemberService.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -177,6 +186,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\RegisterPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\UserInformation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
