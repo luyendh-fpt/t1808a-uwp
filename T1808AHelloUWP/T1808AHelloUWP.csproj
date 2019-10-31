@@ -153,6 +153,7 @@
     <Compile Include="Service\ISongService.cs" />
     <Compile Include="Service\LocalFileService.cs" />
     <Compile Include="Service\MemberService.cs" />
+    <Compile Include="Service\SongService.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">

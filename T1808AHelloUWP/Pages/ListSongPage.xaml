@@ -7,24 +7,44 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:entity="using:T1808AHelloUWP.Entity"
     mc:Ignorable="d"
+    NavigationCacheMode="Enabled"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid>
+        <ScrollViewer>
+            <ListView x:Name="ListViewSong">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="entity:Song">
+                        <StackPanel Orientation="Horizontal">
+                            <Ellipse Height="60" Width="60">
+                                <Ellipse.Fill>
+                                    <ImageBrush ImageSource="{Binding thumbnail}" />
+                                </Ellipse.Fill>
+                            </Ellipse>
+                            <TextBlock FontSize="20" FontWeight="Bold" Text="{Binding name}"></TextBlock>
+                            <SymbolIcon Symbol="Play" DoubleTapped="UIElement_OnDoubleTapped" Tag="{Binding}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollViewer>
+        <CommandBar VerticalAlignment="Bottom">
+            <!--<AppBarToggleButton Icon="Shuffle" Label="Shuffle" Click="AppBarButton_Click" />
+            <AppBarToggleButton Icon="RepeatAll" Label="Repeat" Click="AppBarButton_Click"/>-->
+            <AppBarSeparator/>
+            <AppBarButton Icon="Previous" Label="Previous" Click="Previous"/>
+            <AppBarButton Icon="Play" x:Name="PlayAndPauseButton" Label="Play" Click="Play"/>
+            <AppBarButton Icon="Next" Label="Next" Click="Next"/>
 
-    <StackPanel>
-        <ListView x:Name="ListViewSong" ItemsSource="{x:Bind ListSong}">
-            <ListView.ItemTemplate>
-                <DataTemplate x:DataType="entity:Song">
-                    <StackPanel Orientation="Horizontal">
-                        <Ellipse Height="60" Width="60">
-                            <Ellipse.Fill>
-                                <ImageBrush ImageSource="{Binding thumbnail}" />
-                            </Ellipse.Fill>
-                        </Ellipse>
-                        <TextBlock FontSize="20" FontWeight="Bold" Text="{Binding name}"></TextBlock>
-                        <SymbolIcon Symbol="Play" DoubleTapped="UIElement_OnDoubleTapped" Tag="{Binding}"/>
-                    </StackPanel>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+            <!--<CommandBar.SecondaryCommands>
+                <AppBarButton Label="Like" Click="AppBarButton_Click"/>
+                <AppBarButton Label="Dislike" Click="AppBarButton_Click"/>
+            </CommandBar.SecondaryCommands>-->
+
+            <CommandBar.Content>
+                <TextBlock x:Name="NowPlayingText" Text="Now playing..." Margin="12,14"/>
+            </CommandBar.Content>
+        </CommandBar>
         <MediaElement x:Name="MyMediaElement"></MediaElement>
-    </StackPanel>
+    </Grid>
+    
 </Page>

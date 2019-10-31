@@ -40,6 +40,7 @@ namespace T1808AHelloUWP
 
         public LoginPage()
         {
+            Debug.WriteLine("Init login.");
             this.InitializeComponent();
             this._memberService = new MemberService();
             this._fileService = new LocalFileService();

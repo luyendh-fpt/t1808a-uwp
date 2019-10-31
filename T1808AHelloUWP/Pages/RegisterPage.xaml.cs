@@ -38,6 +38,7 @@ namespace T1808AHelloUWP.Pages
         private IMemberService _memberService;
         public RegisterPage()
         {
+            Debug.WriteLine("Init register.");
             this.InitializeComponent();
             this._memberService = new MemberService();
         }

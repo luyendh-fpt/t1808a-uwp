@@ -9,8 +9,8 @@ namespace T1808AHelloUWP.Service
 {
     interface ISongService
     {
-        Song CreateSong(Song song);
-        List<Song> GetAllSong();
-        List<Song> GetMineSongs();
+        Song CreateSong(MemberCredential memberCredential, Song song);
+        List<Song> GetAllSong(MemberCredential memberCredential);
+        List<Song> GetMineSongs(MemberCredential memberCredential);
     }
 }

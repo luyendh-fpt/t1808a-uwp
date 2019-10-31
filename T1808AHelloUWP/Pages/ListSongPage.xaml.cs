@@ -26,63 +26,110 @@ namespace T1808AHelloUWP.Pages
     /// </summary>
     public sealed partial class ListSongPage : Page
     {
-        ObservableCollection<Song> ListSong;
+        static ObservableCollection<Song> ListSong;
+        static bool refresh = true;
         private ISongService _songService;
+        private bool running = false;
+        private int currentIndex = 0;
+        
         public ListSongPage()
         {
-            this.ListSong = new ObservableCollection<Song>();
-            this.ListSong.Add(new Song()
-            {
-                name = "Chưa bao giờ",
-                singer = "Hà Anh Tuấn",
-                thumbnail = "https://file.tinnhac.com/resize/600x-/music/2017/07/04/19554480101556946929-b89c.jpg",
-                link = "https://c1-ex-swe.nixcdn.com/NhacCuaTui963/ChuaBaoGioSEESINGSHARE2-HaAnhTuan-5111026.mp3"
-            });
-            this.ListSong.Add(new Song()
-            {
-                name = "Tình thôi xót xa",
-                singer = "Hà Anh Tuấn",
-                thumbnail = "https://i.ytimg.com/vi/XyjhXzsVdiI/maxresdefault.jpg",
-                link = "https://c1-ex-swe.nixcdn.com/NhacCuaTui963/TinhThoiXotXaSEESINGSHARE1-HaAnhTuan-4652191.mp3"
-            });
-            this.ListSong.Add(new Song()
-            {
-                name = "Tháng tư là tháng nói dối của em",
-                singer = "Hà Anh Tuấn",
-                thumbnail = "https://sky.vn/wp-content/uploads/2018/05/0-30.jpg",
-                link = "https://od.lk/s/NjFfMjM4MzQ1OThf/ThangTuLaLoiNoiDoiCuaEm-HaAnhTuan-4609544.mp3"
-            });
-            this.ListSong.Add(new Song()
-            {
-                name = "Nơi ấy bình yên",
-                singer = "Hà Anh Tuấn",
-                thumbnail = "https://i.ytimg.com/vi/A8u_fOetSQc/hqdefault.jpg",
-                link = "https://c1-ex-swe.nixcdn.com/NhacCuaTui946/NoiAyBinhYenSeeSingShare2-HaAnhTuan-5085337.mp3"
-            });
-            this.ListSong.Add(new Song()
-            {
-                name = "Giấc mơ chỉ là giấc mơ",
-                singer = "Hà Anh Tuấn",
-                thumbnail = "https://i.ytimg.com/vi/J_VuNwxSEi0/maxresdefault.jpg",
-                link = "https://c1-ex-swe.nixcdn.com/NhacCuaTui945/GiacMoChiLaGiacMoSeeSingShare2-HaAnhTuan-5082049.mp3"
-            });
-            this.ListSong.Add(new Song()
-            {
-                name = "Người tình mùa đông",
-                singer = "Hà Anh Tuấn",
-                thumbnail = "https://i.ytimg.com/vi/EXAmxBxpZEM/maxresdefault.jpg",
-                link = "https://c1-ex-swe.nixcdn.com/NhacCuaTui963/NguoiTinhMuaDongSEESINGSHARE2-HaAnhTuan-5104816.mp3"
-            }); ;
+            Debug.WriteLine("Init list song.");
+            this.Loaded += CheckMemberCredential;
             this.InitializeComponent();
+            this._songService = new SongService();
+            LoadSongs();
+        }
+
+
+        private void LoadSongs()
+        {
+            if (refresh)
+            {
+                Debug.WriteLine("Fetching song");
+                var list = this._songService.GetAllSong(ProjectConfiguration.CurrentMemberCredential);
+                ListSong = new ObservableCollection<Song>(list);
+                refresh = false;
+            }
+            else
+            {
+                Debug.WriteLine("Have all song");
+
+            }
+            ListViewSong.ItemsSource = ListSong;
+        }
+
+        private void CheckMemberCredential(object sender, RoutedEventArgs e)
+        {
+            if (ProjectConfiguration.CurrentMemberCredential == null)
+            {
+                this.Frame.Navigate(typeof(LoginPage));
+            }
         }
 
         private void UIElement_OnDoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
         {
+            Debug.WriteLine(ListViewSong.SelectedIndex);
+            currentIndex = ListViewSong.SelectedIndex;
             var playIcon = sender as SymbolIcon;
-            var currentSong = playIcon.Tag as Song;
-            Debug.WriteLine(currentSong.name);
-            MyMediaElement.Source  = new Uri(currentSong.link);
+            if (playIcon != null)
+            {
+                var currentSong = playIcon.Tag as Song;
+                Debug.WriteLine(currentSong.name);
+                MyMediaElement.Source = new Uri(currentSong.link);
+                NowPlayingText.Text = "Now playing: " + currentSong.name + " - " + currentSong.singer;
+            }
             MyMediaElement.Play();
+            PlayAndPauseButton.Icon = new SymbolIcon(Symbol.Pause);
+            running = true;
+        }
+
+        private void AppBarButton_Click(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void Play(object sender, RoutedEventArgs e)
+        {
+            if (running)
+            {
+                MyMediaElement.Pause();
+                PlayAndPauseButton.Icon = new SymbolIcon(Symbol.Play);
+                running = false;
+            }
+            else
+            {
+                MyMediaElement.Play();
+                PlayAndPauseButton.Icon = new SymbolIcon(Symbol.Pause);
+                running = true;
+            }
+        }
+
+        private void Next(object sender, RoutedEventArgs e)
+        {
+            currentIndex+=1;
+            if (currentIndex >= ListSong.Count)
+            {
+                currentIndex = 0;
+            }
+            var song = ListSong[currentIndex];
+            ListViewSong.SelectedIndex = currentIndex;
+            MyMediaElement.Source = new Uri(song.link);
+            NowPlayingText.Text = "Now playing: " + song.name + " - " + song.singer;
+            MyMediaElement.Play();
+        }
+
+        private void Previous(object sender, RoutedEventArgs e)
+        {
+            currentIndex -= 1;
+            if (currentIndex < 0)
+            {
+                currentIndex = ListSong.Count - 1;
+            }
+            var song = ListSong[currentIndex];
+            ListViewSong.SelectedIndex = currentIndex;
+            MyMediaElement.Source = new Uri(song.link);
+            NowPlayingText.Text = "Now playing: " + song.name + " - " + song.singer;
         }
     }
 }

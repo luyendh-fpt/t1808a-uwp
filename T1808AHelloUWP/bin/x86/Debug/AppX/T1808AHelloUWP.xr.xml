@@ -10,6 +10,7 @@
     <RootType FullName="Windows.UI.Xaml.Controls.Page">
       <RootProperty Name="Background" />
       <RootProperty Name="Content" />
+      <RootProperty Name="NavigationCacheMode" />
       <RootProperty Name="Resources" />
     </RootType>
     <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.ThemeResourceExtension" />
@@ -53,9 +54,6 @@
     <RootType FullName="Windows.UI.Xaml.Controls.AutoSuggestBox">
       <RootProperty Name="QueryIcon" />
     </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.ScrollViewer">
-      <RootProperty Name="Content" />
-    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Frame">
       <RootProperty Name="Padding" />
       <RootProperty Name="IsTabStop" />
@@ -90,9 +88,9 @@
       <RootProperty Name="FontSize" />
       <RootProperty Name="FontWeight" />
       <RootProperty Name="Text" />
+      <RootProperty Name="Margin" />
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Inlines" />
-      <RootProperty Name="Margin" />
       <RootProperty Name="TextWrapping" />
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="Visibility" />
@@ -116,7 +114,21 @@
       <RootProperty Name="ImageSource" />
     </RootType>
     <RootType FullName="T1808AHelloUWP.Demo.ScrollViewerDemo" />
+    <RootType FullName="Windows.UI.Xaml.Controls.ScrollViewer">
+      <RootProperty Name="Content" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.CommandBar">
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="PrimaryCommands" />
+      <RootProperty Name="Content" />
+    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.MediaElement" />
+    <RootType FullName="Windows.UI.Xaml.Controls.AppBarSeparator" />
+    <RootType FullName="Windows.UI.Xaml.Controls.AppBarButton">
+      <RootProperty Name="Icon" />
+      <RootProperty Name="Label" />
+      <RootEvent Name="Click" />
+    </RootType>
     <RootType FullName="T1808AHelloUWP.Pages.ListSongPage" />
     <RootType FullName="Windows.UI.Xaml.FrameworkElement">
       <RootProperty Name="Margin" />

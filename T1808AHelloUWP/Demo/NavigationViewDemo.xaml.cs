@@ -14,7 +14,9 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
+using T1808AHelloUWP.Entity;
 using T1808AHelloUWP.Pages;
+using T1808AHelloUWP.Service;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -25,9 +27,13 @@ namespace T1808AHelloUWP.Demo
     /// </summary>
     public sealed partial class NavigationViewDemo : Page
     {
+        private IFileService fileService;
+
         public NavigationViewDemo()
         {
             this.InitializeComponent();
+            this.fileService = new LocalFileService();
+            this.Loaded += LoadCurrentLoggedIn;
         }
 
         // Add "using" for WinUI controls.
@@ -90,6 +96,16 @@ namespace T1808AHelloUWP.Demo
             };
             altLeft.Invoked += BackInvoked;
             this.KeyboardAccelerators.Add(altLeft);
+            
+        }
+
+        private async void LoadCurrentLoggedIn(object sender, RoutedEventArgs e)
+        {
+            var memberCredential = await this.fileService.ReadMemberCredentialFromFile();
+            if (memberCredential != null)
+            {
+                ProjectConfiguration.CurrentMemberCredential = memberCredential;
+            }
         }
 
         private void NavView_ItemInvoked(NavigationView sender,

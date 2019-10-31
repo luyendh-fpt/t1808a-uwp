@@ -36,6 +36,7 @@ namespace T1808AHelloUWP.Pages
 
         public UserInformation()
         {
+            Debug.WriteLine("Init userinformation.");
             this.InitializeComponent();
             this._memberService = new MemberService();
             this._fileService = new LocalFileService();
@@ -44,7 +45,11 @@ namespace T1808AHelloUWP.Pages
 
         private async void LoadUserInformation(object sender, RoutedEventArgs e)
         {
-            var memberCredential = await this._fileService.ReadMemberCredentialFromFile();
+            MemberCredential memberCredential = ProjectConfiguration.CurrentMemberCredential;
+            if (ProjectConfiguration.CurrentMemberCredential == null)
+            {
+                memberCredential = await this._fileService.ReadMemberCredentialFromFile();
+            }
             if (memberCredential == null)
             {
                 this.Frame.Navigate(typeof(LoginPage));
